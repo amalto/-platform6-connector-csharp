@@ -1,4 +1,4 @@
-﻿namespace csharp {
+﻿namespace Library {
 	public static class Constants {
 		public const string IdSeparator = ".";
 		public const string Platform6 = "platform6";

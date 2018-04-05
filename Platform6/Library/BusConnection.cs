@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Com.Amalto.Imdg.Cm;
 using Newtonsoft.Json.Linq;
 
-namespace csharp {
+namespace Library {
 	public class BusConnection {
-		public async static Task<CommonMessage> CreateCommonMessage(
-			string senderId, string receiverId, IEnumerable<CommonMessage.Types.Header> headers, IEnumerable<CommonMessage.Types.Attachment> attachments
-		) {
+		public static CommonMessage CreateCommonMessage(string senderId, string receiverId, IEnumerable<CommonMessage.Types.Header> headers, IEnumerable<CommonMessage.Types.Attachment> attachments) {
 			return new CommonMessage {
 				Id = Guid.NewGuid().ToString(),
 				Destination = Constants.ReceiverIdPrefix + receiverId,

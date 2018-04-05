@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Com.Amalto.Imdg.Cm;
 
-namespace csharp.Models {
+namespace Library.Models {
 	public class CallServiceParameters {
 		/** Email address of the caller. */
 		public string Username;

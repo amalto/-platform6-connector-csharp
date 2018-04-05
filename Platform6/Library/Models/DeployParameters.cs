@@ -1,16 +1,16 @@
-﻿namespace csharp.Models {
-	public interface IDeployParameters {
+﻿namespace Library.Models {
+	public class DeployParameters {
 		/** Email address of the caller. */
-		string Username { get; }
+		public string Username;
 		/** Service's identifier. */
-		string Id { get; }
+		public string Id;
 		/** Path of the endpoint's URL to get the service's client script. */
-		string Path { get; }
+		public string Path;
 		/** Base path of the endpoint's URL to get the service's client script.  */
-		string BasePath { get; }
+		public string BasePath;
 		/** Semver versions of all the service's components. */
-		IVersions Versions { get; }
+		public Versions Versions;
 		/** Properties of the service's entry menu. */
-		UserInterfaceProperties Ui { get; }
+		public UserInterfaceProperties Ui;
 	}
 }

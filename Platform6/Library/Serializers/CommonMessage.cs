@@ -3,7 +3,7 @@ using Google.Protobuf;
 using Hazelcast.IO;
 using Hazelcast.IO.Serialization;
 
-namespace csharp.Serializers {
+namespace Library.Serializers {
 	public class Message: IStreamSerializer<CommonMessage> {
 		public int GetTypeId() {
 			return 10;

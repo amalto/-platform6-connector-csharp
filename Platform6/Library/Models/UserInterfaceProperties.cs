@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace csharp.Models {
+namespace Library.Models {
 	public class UserInterfaceProperties {
 		/** Visibility of the entry menu. */
 		public bool visible;

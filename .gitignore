@@ -1,4 +1,11 @@
 .DS_Store
 .idea/
 obj/
-Platform6/Messages/ProtocolBuffers/
+bin/
+Platform6/Library/Messages/ProtocolBuffers/
+Platform6/Library/Properties/
+Platform6/Service/Properties/
+
+
+
+Platform6/packages/
