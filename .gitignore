@@ -2,10 +2,7 @@
 .idea/
 obj/
 bin/
+Platform6/packages/
 Platform6/Library/Messages/ProtocolBuffers/
 Platform6/Library/Properties/
 Platform6/Service/Properties/
-
-
-
-Platform6/packages/
