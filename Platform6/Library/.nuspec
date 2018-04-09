@@ -2,12 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Platform6.Client</id>
-        <version>0.0.1-alpha1</version>
+        <version>0.0.1-alpha2</version>
         <description>Platform 6 C# client</description>
         <authors>roxanemace</authors>
         <projectUrl>https://github.com/amalto/platform6-client-csharp</projectUrl>
         <licenseUrl>https://github.com/amalto/platform6-client-csharp/blob/master/LICENSE</licenseUrl>
-        <iconUrl>https://github.com/amalto/platform6-client-csharp/blob/master/Platform6/Library/images/logo.png</iconUrl>
+        <iconUrl>https://raw.githubusercontent.com/amalto/platform6-client-csharp/master/Platform6/Library/images/logo.png</iconUrl>
         <tags>amalto platform6 client</tags>
     </metadata>
 </package>
