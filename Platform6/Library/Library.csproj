@@ -62,6 +62,7 @@
     <Content Include="images\logo.png" />
     <Content Include="Messages\common_message_proto_buff.proto" />
     <Content Include=".nuspec" />
+    <Content Include="release.sh" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug" />
