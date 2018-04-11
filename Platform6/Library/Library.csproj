@@ -63,6 +63,8 @@
     <Content Include="Messages\common_message_proto_buff.proto" />
     <Content Include=".nuspec" />
     <Content Include="release.sh" />
+    <Content Include="releases\Platform6.Client.0.0.1-alpha1.nupkg" />
+    <Content Include="releases\Platform6.Client.0.0.1-alpha2.nupkg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug" />
