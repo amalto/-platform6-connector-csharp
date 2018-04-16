@@ -22,14 +22,14 @@ fi
 git fetch
 
 # Update .nuspec file
-sed -i '' -e "s/<version>.*<\/version>/<version>$1<\/version>/g" ./.nuspec
+sed -i '' -e "s/<version>.*<\/version>/<version>$1<\/version>/g" ./Library/.nuspec
 
 # Build the project
-msbuild Library.csproj
+msbuild ./Library/Library.csproj
 
 # Create the NuGet package
 cd releases/
-nuget pack ../Library.csproj
+nuget pack ../Library/Library.csproj
 
 # Tag the release
 git commit -am "Bump to version $1"

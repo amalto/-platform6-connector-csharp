@@ -18,7 +18,7 @@ namespace TestService {
 				},
 				Ui = new UserInterfaceProperties {
 					visible = true,
-					iconName = "fa-hashtag",
+					iconName = "fas fa-hashtag",
 					weight = 30,
 					label = new Dictionary<string, string> {
 						{"en-US", "C Sharp"},
