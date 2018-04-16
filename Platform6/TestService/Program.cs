@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using Library.Models;
 
-namespace Service {
-	public class Application {
+namespace TestService {
+	internal class Program {
 		private const string MyServiceId = "demo.csharp";
 
-		private static void Main() {
+		public static void Main() {
 			var parameters = new DeployParameters {
 				Id = MyServiceId,
 				Username = "admin@amalto.com",
