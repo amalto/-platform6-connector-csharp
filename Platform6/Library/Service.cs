@@ -12,17 +12,25 @@ using Library.Serializers;
 using Newtonsoft.Json;
 
 namespace Library {
+    /// Platform 6 service helpers
     public class Service {
+        /// The service's id formatted into a key
         private string _idKey;
 
+        /// Hazelcast client instance
         public IHazelcastInstance Client;
+        /// Platform 6 service instance
         public Task Deployed;
 
+        /// <summary>Create an instance of Platform 6 service</summary>
+        /// <param name="parameters">Deployment parameters</param>
         public Service(DeployParameters parameters) {
             _idKey = Constants.SenderIdPrefix + parameters.Id;
             Deployed = DeployService(parameters);
         }
 
+        /// <summary>Create a Hazelcast client</summary>
+        /// <returns>Promise of void</returns>
         private async Task CreateHazelcastClient() {
             Environment.SetEnvironmentVariable("hazelcast.logging.level", "info");
             Environment.SetEnvironmentVariable("hazelcast.logging.type", "console");
@@ -40,6 +48,9 @@ namespace Library {
             Client = Task.Run(() => HazelcastClient.NewHazelcastClient(config)).Result;
         }
 
+        /// <summary>Deploy the service</summary>
+        /// <param name="parameters">Deployment parameters</param>
+        /// <returns>Response of the service's deployment</returns>
         private async Task DeployService(DeployParameters parameters) {
             if (Client == null) await CreateHazelcastClient();
 
@@ -59,6 +70,9 @@ namespace Library {
             });
         }
 
+        /// <summary>Send a request to another service</summary>
+        /// <param name="parameters">Required parameters for the request</param>
+        /// <returns>Response of the service</returns>
         public async Task<CommonMessage> CallService(CallServiceParameters parameters) {
             var receiverId = parameters.ReceiverId;
             var headers = new List<Header> {BusConnection.CreateHeader(null, Constants.UserKey, parameters.Username)};
@@ -71,6 +85,10 @@ namespace Library {
             return await SendCommonMessage(receiverId, commonMessage);
         }
 
+        /// <summary>Send a message to another service</summary>
+        /// <param name="receiverId">Identifier of the service receiving the message</param>
+        /// <param name="commonMessage">Message sent</param>
+        /// <returns>Response of the common message sent</returns>
         public async Task<CommonMessage> SendCommonMessage(string receiverId, CommonMessage commonMessage) {
             var receiverIdKey = Constants.ReceiverIdPrefix + receiverId;
             var request = Client.GetQueue<CommonMessage>(receiverIdKey);
