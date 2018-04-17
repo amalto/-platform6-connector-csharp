@@ -5,6 +5,7 @@
 		public const string Platform6AppKey = Platform6 + IdSeparator;
 		public const string Action = "action";
 		public const string ActionDeploy = "deploy";
+		public const string ActionUnDeploy = "undeploy";
 
 		public const string HeaderKeyPrefix = "b2" + IdSeparator;
 		public const string ReceiverIdPrefix = "cmb" + IdSeparator;

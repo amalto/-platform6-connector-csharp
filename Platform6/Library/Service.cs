@@ -14,8 +14,12 @@ using Newtonsoft.Json;
 namespace Library {
     /// Platform 6 service helpers
     public class Service {
+        /// The identifier of the service
+        private string _id;
         /// The service's id formatted into a key
         private string _idKey;
+        /// The identifier of the node
+        private string _nodeId;
 
         /// Hazelcast client instance
         public IHazelcastInstance Client;
@@ -25,6 +29,7 @@ namespace Library {
         /// <summary>Create an instance of Platform 6 service</summary>
         /// <param name="parameters">Deployment parameters</param>
         public Service(DeployParameters parameters) {
+            _id = parameters.Id;
             _idKey = Constants.SenderIdPrefix + parameters.Id;
             Deployed = DeployService(parameters);
         }
@@ -46,11 +51,12 @@ namespace Library {
             config.GetNetworkConfig().AddAddress(hostname + ":" + port);
 
             Client = Task.Run(() => HazelcastClient.NewHazelcastClient(config)).Result;
+            _nodeId = Client.GetLocalEndpoint().GetUuid();
         }
 
         /// <summary>Deploy the service</summary>
         /// <param name="parameters">Deployment parameters</param>
-        /// <returns>Response of the service's deployment</returns>
+        /// <returns>Response of the service deployment</returns>
         private async Task DeployService(DeployParameters parameters) {
             if (Client == null) await CreateHazelcastClient();
 
@@ -59,13 +65,28 @@ namespace Library {
                 ReceiverId = Constants.ServiceManagerId,
                 Action = Constants.ActionDeploy,
                 Headers = new List<Header> {
-                    BusConnection.CreateHeader(Constants.ServiceManagerId, "node.id", Client.GetName()),
-                    BusConnection.CreateHeader(Constants.ServiceManagerId, "service.id", parameters.Id),
+                    BusConnection.CreateHeader(Constants.ServiceManagerId, "node.id", _nodeId),
+                    BusConnection.CreateHeader(Constants.ServiceManagerId, "service.id", _id),
                     BusConnection.CreateHeader(Constants.ServiceManagerId, "service.path", parameters.Path),
                     BusConnection.CreateHeader(Constants.ServiceManagerId, "service.ctx", parameters.BasePath),
                     BusConnection.CreateHeader(Constants.ServiceManagerId, "service.version", parameters.Versions.Server),
                     BusConnection.CreateHeader(Constants.ServiceManagerId, "service.ui.version", parameters.Versions.Client),
                     BusConnection.CreateHeader(Constants.ServiceManagerId, "service.ui", JsonConvert.SerializeObject(parameters.Ui))
+                }
+            });
+        }
+
+        /// <summary>Undeploy the service</summary>
+        /// <param name="username">Email of the user undeploying the service</param>
+        /// <returns>Response of the service undeployment</returns>
+        public async Task UndeployService(string username) {
+            await CallService(new CallServiceParameters {
+                Username = username,
+                ReceiverId = Constants.ServiceManagerId,
+                Action = Constants.ActionUnDeploy,
+                Headers = new List<Header> {
+                    BusConnection.CreateHeader(Constants.ServiceManagerId, "node.id", _nodeId),
+                    BusConnection.CreateHeader(Constants.ServiceManagerId, "service.id", _id)
                 }
             });
         }
