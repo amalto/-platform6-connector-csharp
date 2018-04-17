@@ -59,7 +59,7 @@ namespace Library {
                 ReceiverId = Constants.ServiceManagerId,
                 Action = Constants.ActionDeploy,
                 Headers = new List<Header> {
-                    BusConnection.CreateHeader(Constants.ServiceManagerId, "node.id", Guid.NewGuid().ToString()),
+                    BusConnection.CreateHeader(Constants.ServiceManagerId, "node.id", Client.GetName()),
                     BusConnection.CreateHeader(Constants.ServiceManagerId, "service.id", parameters.Id),
                     BusConnection.CreateHeader(Constants.ServiceManagerId, "service.path", parameters.Path),
                     BusConnection.CreateHeader(Constants.ServiceManagerId, "service.ctx", parameters.BasePath),
