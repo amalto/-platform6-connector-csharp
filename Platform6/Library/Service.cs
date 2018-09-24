@@ -61,32 +61,29 @@ namespace Library {
             if (Client == null) await CreateHazelcastClient();
 
             await CallService(new CallServiceParameters {
-                Username = parameters.Username,
                 ReceiverId = Constants.ServiceManagerId,
                 Action = Constants.ActionDeploy,
                 Headers = new List<Header> {
-                    BusConnection.CreateHeader(Constants.ServiceManagerId, "node.id", _nodeId),
-                    BusConnection.CreateHeader(Constants.ServiceManagerId, "service.id", _id),
-                    BusConnection.CreateHeader(Constants.ServiceManagerId, "service.path", parameters.Path),
-                    BusConnection.CreateHeader(Constants.ServiceManagerId, "service.ctx", parameters.BasePath),
-                    BusConnection.CreateHeader(Constants.ServiceManagerId, "service.version", parameters.Versions.Server),
-                    BusConnection.CreateHeader(Constants.ServiceManagerId, "service.ui.version", parameters.Versions.Client),
-                    BusConnection.CreateHeader(Constants.ServiceManagerId, "service.ui", JsonConvert.SerializeObject(parameters.Ui))
+                    BusConnection.CreateHeader(Constants.Platform6AppKey + "node.id", _nodeId),
+                    BusConnection.CreateHeader(Constants.Platform6AppKey + "service.id", _id),
+                    BusConnection.CreateHeader(Constants.Platform6AppKey + "service.path", parameters.Path),
+                    BusConnection.CreateHeader(Constants.Platform6AppKey + "service.ctx", parameters.BasePath),
+                    BusConnection.CreateHeader(Constants.Platform6AppKey + "service.version", parameters.Versions.Server),
+                    BusConnection.CreateHeader(Constants.Platform6AppKey + "service.ui.version", parameters.Versions.Client),
+                    BusConnection.CreateHeader(Constants.Platform6AppKey + "service.ui", JsonConvert.SerializeObject(parameters.Ui))
                 }
             });
         }
 
         /// <summary>Undeploy the service</summary>
-        /// <param name="username">Email of the user undeploying the service</param>
         /// <returns>Response of the service undeployment</returns>
-        public async Task UndeployService(string username) {
+        public async Task UndeployService() {
             await CallService(new CallServiceParameters {
-                Username = username,
                 ReceiverId = Constants.ServiceManagerId,
                 Action = Constants.ActionUnDeploy,
                 Headers = new List<Header> {
-                    BusConnection.CreateHeader(Constants.ServiceManagerId, "node.id", _nodeId),
-                    BusConnection.CreateHeader(Constants.ServiceManagerId, "service.id", _id)
+                    BusConnection.CreateHeader(Constants.Platform6AppKey + "node.id", _nodeId),
+                    BusConnection.CreateHeader(Constants.Platform6AppKey + "service.id", _id)
                 }
             });
         }
@@ -96,10 +93,11 @@ namespace Library {
         /// <returns>Response of the service</returns>
         public async Task<CommonMessage> CallService(CallServiceParameters parameters) {
             var receiverId = parameters.ReceiverId;
-            var headers = new List<Header> {BusConnection.CreateHeader(null, Constants.UserKey, parameters.Username)};
+            var headers = new List<Header>();
             var attachments = parameters.Attachments ?? new List<Attachment>();
 
-            if (parameters.Action != null) headers.Add(BusConnection.CreateHeader(receiverId, Constants.Action, parameters.Action));
+            if (parameters.Username != null) headers.Add(BusConnection.CreateHeader(Constants.RequestPrefix + "user", parameters.Username));
+            if (parameters.Action != null) headers.Add(BusConnection.CreateHeader(Constants.RequestPrefix +  "action", parameters.Action));
             if (parameters.Headers != null) headers.AddRange(parameters.Headers);
 
             var commonMessage = Task.Run(() => BusConnection.CreateCommonMessage(_idKey, parameters.ReceiverId, headers, attachments)).Result;
@@ -117,11 +115,11 @@ namespace Library {
 
             if (!isSent) throw new Exception("Unable to send the common message with id " + commonMessage.Id + "!");
 
-            BusConnection.DisplayCommonMessage(receiverIdKey, commonMessage);
+            BusConnection.DisplayCommonMessage(commonMessage);
 
             var response = Task.Run(() => Client.GetQueue<CommonMessage>(_idKey).Take()).Result;
 
-            BusConnection.DisplayCommonMessage(receiverIdKey, response);
+            BusConnection.DisplayCommonMessage(response);
 
             if (!response.Id.Equals(commonMessage.Id))
                 throw new Exception("Common message response's id " + response.Id + " is not the same as the common message request's id " + commonMessage.Id + "!");

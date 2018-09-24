@@ -9,8 +9,7 @@ namespace TestService {
 		public static void Main() {
 			var parameters = new DeployParameters {
 				Id = MyServiceId,
-				Username = "admin@amalto.com",
-				Path = "/" + MyServiceId + "/api/",
+				Path = "/" + MyServiceId + "/api",
 				BasePath = "http://docker.for.mac.localhost:8000",
 				Versions = new Versions {
 					Client = "0.0.0",
