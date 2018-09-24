@@ -14,7 +14,7 @@ Platform 6 client depends on:
 
 ## Installing the client
 
-You can install the [Platform 6 .Net client](https://www.nuget.org/packages/Platform6.Client/0.0.1-alpha6) from NuGet repository using PackageManager:
+You can install the [Platform 6 .Net client](https://www.nuget.org/packages/Platform6.Client/0.0.1-alpha6) from the NuGet repository using PackageManager:
 
 ```bash
 PM> Install-Package Platform6.Client
