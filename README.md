@@ -26,11 +26,11 @@ You can find an example of a service using this library [here](https://github.co
 
 ### API
 
-You will find the documentation of the methods exposed in the section [API](https://github.com/amalto/platform6-client-csharp/blob/master/API.md).
+You will find the documentation of the methods exposed in the section [API](https://github.com/amalto/platform6-client-csharp/blob/master/Platform6/API.md).
 
 ## Release notes
 
-Please refer to [changelog](./CHANGELOG.md) to see the descriptions of each release.
+Please refer to [changelog](./Platform6/CHANGELOG.md) to see the descriptions of each release.
 
 ## License
 

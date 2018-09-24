@@ -24,6 +24,20 @@ git fetch
 # Update .nuspec file
 sed -i '' -e "s/<version>.*<\/version>/<version>$1<\/version>/g" ./Library/.nuspec
 
+# Update changelog
+DATE=$(date +%Y-%m-%d)
+TAG=$(echo v$1)
+LINK=$(grep '\[Unreleased\]:' CHANGELOG.md)
+ESCAPED_LINK=$(echo ${LINK} | sed -e 's/\[/\\[/g' -e 's/\]/\\]/g')
+HEAD_LINK=$(echo ${LINK} | sed -E "s/v[0-9.]+$/$TAG/g" )
+RELEASE_LINK=$(echo ${LINK} | sed -e s/Unreleased/$1/g -e s/HEAD/${TAG}/g)
+
+sed -i '' "s/## \[Unreleased\]/## [Unreleased]\\
+\\
+## [$1] - $DATE/g" CHANGELOG.md
+sed -i '' "s|$ESCAPED_LINK|$HEAD_LINK\\
+$RELEASE_LINK|g" CHANGELOG.md
+
 # Build the project
 msbuild ./Library/Library.csproj
 
