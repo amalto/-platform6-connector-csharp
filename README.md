@@ -1,5 +1,7 @@
 # Platform 6 C# client
 
+⚠️ ⚠️ ⚠️ This project has been archived and moved into [amalto/platform6-connector-csharp](https://github.com/amalto/platform6-connector-csharp).
+
 > [Platform 6](https://documentation.amalto.com/platform6/master/) C# client
 
 This repository is a [Platform 6 client](https://documentation.amalto.com/platform6/master/developer-guide/platform6-clients/) aiming to help the development a [service](https://documentation.amalto.com/platform6/master/developer-guide/getting-started/) in C#.
