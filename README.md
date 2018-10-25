@@ -1,28 +1,26 @@
-# Platform 6 C# client
+# Platform 6 C# connector
 
-⚠️ ⚠️ ⚠️ This project has been archived and moved into [amalto/platform6-connector-csharp](https://github.com/amalto/platform6-connector-csharp).
+> [Platform 6](https://documentation.amalto.com/platform6/master/) C# connector
 
-> [Platform 6](https://documentation.amalto.com/platform6/master/) C# client
-
-This repository is a [Platform 6 client](https://documentation.amalto.com/platform6/master/developer-guide/platform6-clients/) aiming to help the development a [service](https://documentation.amalto.com/platform6/master/developer-guide/getting-started/) in C#.
+This repository is a [Platform 6 connector](https://documentation.amalto.com/platform6/master/develop-app/custom-service/platform6-cmb-connectors/) aiming to help the development a [service](https://documentation.amalto.com/platform6/master/developer-guide/getting-started/) in C#.
 It exposes, among others, methods to facilitate the communication with a Platform 6 instance.
 
 ## Requirements
 
-Platform 6 client depends on:
+Platform 6 connector depends on:
 - [Microsoft .Net Framework](https://www.microsoft.com/en-us/download/details.aspx?id=17851) (version >= 4),
 - [Microsoft .Net Core](https://docs.microsoft.com/en-us/dotnet/core/) (version >= 2),
 - [Platform 6](https://documentation.amalto.com/platform6/master/user-guide/getting-started/) (version `5.17.0` and higher)
 
-## Installing the client
+## Installing the connector
 
-You can install the [Platform 6 .Net client](https://www.nuget.org/packages/Platform6.Client/0.0.1-alpha6) from the NuGet repository using PackageManager:
+You can install the [Platform 6 .Net connector](https://www.nuget.org/packages/Platform6.Client/0.0.1-alpha6) from the NuGet repository using PackageManager:
 
 ```bash
 PM> Install-Package Platform6.Client
 ```
 
-## Using the client
+## Using the connector
 
 You can find an example of a service using this library [here](https://github.com/amalto/platform6-service-csharp).
 
