@@ -28,6 +28,27 @@ You can find an example of a service using this library [here](https://github.co
 
 You will find the documentation of the methods exposed in the section [API](https://github.com/amalto/platform6-client-csharp/blob/master/Platform6/API.md).
 
+## Build the project
+
+Install [protocol buffer](https://developers.google.com/protocol-buffers/docs/csharptutorial):
+
+> For Mac OS X, use: `brew install protobuf`
+
+Run the compiler.
+
+```
+$ cd Platform6/Messages/
+$ mkdir ProtocolBuffers && protoc -I=. --csharp_out=ProtocolBuffers common_message_proto_buff.proto
+```
+
+It will generate the `CommonMessageProtoBuff.cs` in the `ProtocolBuffers` folder.
+
+Compile the C# classes to create the `.exe` in the folder `bin/Debug/`.
+
+```
+$ msbuild Platform6/Library/Library.csproj 
+```
+
 ## Release notes
 
 Please refer to [changelog](./Platform6/CHANGELOG.md) to see the descriptions of each release.
