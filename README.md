@@ -14,10 +14,10 @@ Platform 6 connector depends on:
 
 ## Installing the connector
 
-You can install the [Platform 6 .Net connector](https://www.nuget.org/packages/Platform6.Client/0.0.1-alpha6) from the NuGet repository using PackageManager:
+You can install the [Platform 6 .Net connector](https://www.nuget.org/packages/Platform6.Connector) from the NuGet repository using PackageManager:
 
 ```bash
-PM> Install-Package Platform6.Client
+PM> Install-Package Platform6.Connector
 ```
 
 ## Using the connector
@@ -26,7 +26,7 @@ You can find an example of a service using this library [here](https://github.co
 
 ### API
 
-You will find the documentation of the methods exposed in the section [API](https://github.com/amalto/platform6-client-csharp/blob/master/Platform6/API.md).
+You will find the documentation of the methods exposed in the section [API](https://github.com/amalto/platform6-connector-csharp/blob/master/Platform6/API.md).
 
 ## Build the project
 

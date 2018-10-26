@@ -7,7 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.0.1-alpha8] - 2018-10-26
+### Added
+- Write a section in the [README.md](./../README.md) to explain how to build the project.
+### Changed
+- Update the [`.nuspec`](Library/.nuspec) file properties.
+- Rename `client` into `connector` in the [README.md](./../README.md).
 
-[Unreleased]: https://github.com/amalto/platform6-client-csharp/compare/HEAD..v0.0.1-alpha6
-[0.0.1-alpha7]: https://github.com/amalto/platform6-client-csharp/compare/v0.0.1-alpha7..v0.0.1-alpha6
-[0.0.1-alpha6]: https://github.com/amalto/platform6-client-csharp/compare/v0.0.1-alpha6..v0.0.1-alpha1
+[Unreleased]: https://github.com/amalto/platform6-connector-csharp/compare/HEAD..v0.0.1-alpha8
+[0.0.1-alpha8]: https://github.com/amalto/platform6-connector-csharp/releases/tag/v0.0.1-alpha8

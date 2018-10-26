@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 <metadata>
     <id>Platform6.Connector</id>
-    <version>0.0.1-alpha7</version>
+    <version>0.0.1-alpha8</version>
     <description>Platform 6 C# connector</description>
     <authors>Platform6</authors>
     <projectUrl>https://github.com/amalto/platform6-connector-csharp</projectUrl>
