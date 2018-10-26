@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
 <metadata>
-    <id>Platform6.Client</id>
+    <id>Platform6.Connector</id>
     <version>0.0.1-alpha7</version>
-    <description>Platform 6 C# client</description>
-    <authors>roxanemace</authors>
-    <projectUrl>https://github.com/amalto/platform6-client-csharp</projectUrl>
-    <licenseUrl>https://github.com/amalto/platform6-client-csharp/blob/master/LICENSE</licenseUrl>
-    <iconUrl>https://raw.githubusercontent.com/amalto/platform6-client-csharp/master/images/logo.png</iconUrl>
-    <tags>amalto platform6 client</tags>
+    <description>Platform 6 C# connector</description>
+    <authors>Platform6</authors>
+    <projectUrl>https://github.com/amalto/platform6-connector-csharp</projectUrl>
+    <licenseUrl>https://github.com/amalto/platform6-connector-csharp/blob/master/LICENSE</licenseUrl>
+    <iconUrl>https://raw.githubusercontent.com/amalto/platform6-connector-csharp/master/images/logo.png</iconUrl>
+    <tags>amalto platform6 connector</tags>
 </metadata>
 </package>
